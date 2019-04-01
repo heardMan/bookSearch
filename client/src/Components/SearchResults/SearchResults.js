@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import noImg from "../../../public/noImg.png"
 
 class SearchResults extends Component{
     render(){
@@ -17,6 +18,11 @@ class SearchResults extends Component{
                 <div className="card border-0 rounded-0 main-bg">
                     {this.props.state.results.map((result, i) => {
                         let description = result.volumeInfo.description;
+                        let imgLink = result.volumeInfo.imageLinks.thumbnail;
+                        if(imgLink === undefined){
+                            imgLink = noImg;
+                        }
+                        
                         if(
                             description === undefined
                             
@@ -32,7 +38,7 @@ class SearchResults extends Component{
                                                     <div className="card rounded-0 border-0 p-3 ">
                                                         <div className="card-img-top">
                                                             <div className="row">
-                                                                <img className="img-fluid mx-auto" src={result.volumeInfo.imageLinks.thumbnail} alt="" />
+                                                                <img className="img-fluid mx-auto" src={imgLink} alt="" />
                                                             </div>
                                                         </div>
                                                         <div className="card-body m-0">
