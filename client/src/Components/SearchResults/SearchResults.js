@@ -18,9 +18,11 @@ class SearchResults extends Component{
                 <div className="card border-0 rounded-0 main-bg">
                     {this.props.state.results.map((result, i) => {
                         let description = result.volumeInfo.description;
-                        let imgLink = result.volumeInfo.imageLinks.thumbnail;
+                        let imgLink = result.volumeInfo.imageLinks;
                         if(imgLink === undefined){
                             imgLink = noImg;
+                        } else {
+                            imgLink = result.volumeInfo.imageLinks.thumbnail;
                         }
                         
                         if(
