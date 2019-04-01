@@ -74,9 +74,9 @@ saveBook = event => {
     return (
       
       <Router>
-        <Navbar state={this.state} />
+        
         <div className="spacer container-fluid">
-          
+        <Navbar state={this.state} />
 
           <Switch>
             <Route exact path="/" 
