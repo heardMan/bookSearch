@@ -2,48 +2,110 @@ import React, {Component} from "react";
 
 class SearchResults extends Component{
     render(){
+        if(this.props.state.results === undefined){
+            return(
+                <div className="row">
+                    <div className="col-12 text-center">
+                        <h4>No results... next time try a <em>GOOD</em> book</h4>
+                    </div>
+                </div>
+            );
+        } else {
         return(
         <div className="row">
             <div className="col-12">
-                <div className="card rounded-0">
+                <div className="card border-0 rounded-0 main-bg">
                     {this.props.state.results.map((result, i) => {
-
+                        let description = result.volumeInfo.description;
+                        if(
+                            description === undefined
+                            
+                          ){
+                                description = "No description available";
+                            }
                         return(
-                            <div key={`result-${i}`} className="row">
-                                <div className="col-12">
-                                    <div className="card">
-                                        <p>{result.id}</p>
-                                        <p>{result.volumeInfo.title}</p>
-                                        {result.volumeInfo.authors.map((author,j)=>{
+                        <div key={`result-${i}`} className="row">
+                                    <div className="col-12">
+                                        <div className="card rounded-0 m-3 p-3 gray card-shadow">
+                                            <div className="row">
+                                                <div className="col-12 col-md-4 my-auto">
+                                                    <div className="card rounded-0 border-0 p-3 ">
+                                                        <div className="card-img-top">
+                                                            <div className="row">
+                                                                <img className="img-fluid mx-auto" src={result.volumeInfo.imageLinks.thumbnail} alt="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="card-body m-0">
+                                                            <div className="row">
+                                                                <div className="col-6 m-0 p-0">
+                                                                    <div className="text-center m-0 border-top border-bottom">
+                                                                        <a href={result.volumeInfo.infoLink} className="text-primary">Preview</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="col-6 m-0 p-0">
+                                                                    <div className="text-center m-0 border-top border-bottom">
 
-                                            return(
-                                                <p key={`${result.volumeInfo.title}-author-${j}`}>{author}</p>
-                                            );
-                                        })}
-                                        <p>{result.volumeInfo.description}</p>
-                                        <img className="img-fluid" src={result.volumeInfo.imageLinks.thumbnail} alt=""/>
-                                        <a href={result.volumeInfo.previewLink}>Preview</a>
-                                        
-                                        <span>
-                                        <span className="mr-2">Add to favorites</span>
-                                            <button 
-                                                onClick={this.props.saveBook} 
-                                                name={`${i}`} 
-                                                
-                                                className="btn btn-primary rounded-circle m-2">
-                                                <i className="fas fa-plus"></i>
-                                            </button>
-                                        </span>
-                                       
+                                                                        <a className="text-primary"
+                                                                        onClick={this.props.saveBook} 
+                                                                        name={`${i}`}>
+                                                                            Save
+                                                                        </a>
+
+                                                                        
+
+                                                                    </div>
+                                                                </div>
+                                                                
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col-12 col-md-8">
+                                                    <div className="card rounded-0 border-0">
+                                                        <div className="card-title text-center">
+                                                            <p><b>Title: </b>{result.volumeInfo.title}</p>
+                                                            
+                                                        </div>
+                                                        <div className="card-title text-center">
+                                                            <p><b>Author(s): </b></p>
+                                                            {result.volumeInfo.authors.map((author, j)=>{
+                                                                if(j === result.volumeInfo.authors.length -1){
+                                                                    return(
+                                                                        <span key={j}>{author}</span>
+                                                                    )
+                                                                } else {
+                                                                    return(
+                                                                        <span key={j}>{author}, </span>
+                                                                    )
+                                                                }
+                                                                
+                                                            })}
+                                                            
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p><b>Description: </b>{
+                                                                description
+                                                                
+                                                                }</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        );
+);
+
+
+                        
+                        
                     })}
                 </div>
             </div>
         </div>
         );
+                }
     }
 }
 

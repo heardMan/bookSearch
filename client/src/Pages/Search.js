@@ -7,7 +7,7 @@ class Search extends Component{
     render(){
         return(
             <div>
-                <Welcome />
+                <Welcome  match={this.props.match}/>
                 <SearchComponent state={this.props.state}
                                 handleFormSubmit={this.props.handleFormSubmit}
                                 handleInputChange={this.props.handleInputChange}

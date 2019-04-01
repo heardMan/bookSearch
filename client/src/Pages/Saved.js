@@ -6,7 +6,7 @@ class Saved extends Component{
     render(){
         return(
             <div>
-                <Welcome />
+                <Welcome match={this.props.match}/>
                 <SavedBooksComponent />
             </div>
         );

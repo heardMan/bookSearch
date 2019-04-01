@@ -16,7 +16,8 @@ class App extends Component {
     query: "",
     results: [],
     saveBook: "",
-    savedBooks:[]
+    savedBooks:[],
+    currentPage:""
   };
 
   handleInputChange = event => {
@@ -71,9 +72,11 @@ saveBook = event => {
 
   render() {
     return (
+      
       <Router>
-        <div>
-          <Navbar state={this.state} />
+        <Navbar state={this.state} />
+        <div className="spacer container-fluid">
+          
 
           <Switch>
             <Route exact path="/" 

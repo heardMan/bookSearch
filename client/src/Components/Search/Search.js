@@ -7,15 +7,15 @@ class SearchComponent extends Component {
             <div className="row">
                 <div className="col-12 text-center">
 
-                    <div className="card m-3">
+                    <div className="card border-0 rounded-0 m-3 san-marino card-shadow">
                         <div className="card-body">
                             <form>
-                                <div className="form-group">
-                                    <label >Search</label>
-                                    <input value={this.props.state.query} onChange={this.props.handleInputChange} type="text" className="form-control" name="query" id="query" placeholder="Find a Book"/>
+                                <div className="form-group border-bottom">
+                                    {/* <label >Search</label> */}
+                                    <input value={this.props.state.query} onChange={this.props.handleInputChange} type="text" className="form-control rouded-0 border-0 text-center text-white san-marino" name="query" id="query" placeholder="Find some Book"/>
                                  </div>
 
-                                    <button onClick={this.props.handleFormSubmit} name="bookSearch" type="submit" className="btn btn-primary">Submit</button>
+                                    <button onClick={this.props.handleFormSubmit} name="bookSearch" type="submit" className="btn btn-primary">Search</button>
                             </form>
                         </div>
                     </div>
